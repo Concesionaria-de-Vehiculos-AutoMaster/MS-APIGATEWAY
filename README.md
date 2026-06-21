@@ -8,7 +8,7 @@ Este repositorio contiene el API Gateway basado en Spring Cloud Gateway. Actúa 
 
 🎯 ¿Cuál es su función?
 
-En lugar de que los clientes (Postman, Frontend web, aplicaciones móviles) tengan que conocer y recordar los puertos individuales de cada microservicio (8081, 8085, 8087, etc.), envían todas sus peticiones directamente aquí. El API Gateway recibe la solicitud, consulta con Eureka para saber a dónde debe ir, y redirige el tráfico de forma automática e invisible para el usuario.
+En lugar de que los clientes (Postman, Frontend web, aplicaciones móviles) tengan que conocer y recordar los puertos individuales de cada microservicio (8079,8080,8081,8082,8083,8084,8085,8086,8087,8088,8089,), envían todas sus peticiones directamente aquí. El API Gateway recibe la solicitud, consulta con Eureka para saber a dónde debe ir, y redirige el tráfico de forma automática e invisible para el usuario.
 
 ⚙️ Características principales
 

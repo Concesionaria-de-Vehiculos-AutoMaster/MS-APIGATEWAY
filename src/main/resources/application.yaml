@@ -1,0 +1,55 @@
+server:
+  port: 8079 # El puerto público al que llamará el usuario final
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # Le dice al Gateway que use Eureka para encontrar servicios
+      routes:
+        # --- RUTA 1: VENDEDORES ---
+        - id: ms-vendedores-route
+          uri: lb://ms-vendedores # "lb" significa Load Balancer. Busca en Eureka este nombre.
+          predicates:
+            - Path=/api/v1/vendedores/** # Todo lo que empiece así, mándalo a ms-vendedores
+
+        # --- RUTA 2: GARANTIAS ---
+        - id: ms-garantias-route
+          uri: lb://ms-garantias
+          predicates:
+            - Path=/api/v1/garantias/**
+
+        # RUTA 3 (Fíjate que la indentación sea IDENTICA a las de arriba)
+        - id: ms-modelos-route
+          uri: lb://ms-modelo
+          predicates:
+            - Path=/api/v1/modelos/**
+
+        - id: ms-postventa-route
+          uri: lb://ms-postventa
+          predicates:
+            - Path=/api/v1/postventa/**
+
+
+        - id: ms-repuestos-route
+          uri: lb://ms-repuestos
+          predicates:
+              - Path=/api/v1/repuestos/**
+
+        # --- RUTA CLIENTES ---
+        - id: ms-clientes-route
+          uri: lb://ms-clientes
+          predicates:
+                    - Path=/api/v1/clientes/**
+
+        - id: ms-stock-route
+          uri: lb://ms-stock
+          predicates:
+            - Path=/api/v1/stock/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
